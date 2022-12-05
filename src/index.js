@@ -3,12 +3,25 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route, Navigate, Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './components/redux/configStore';
+import BTBurger from './components/BTBurger';
+import Home from './components/Home';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    {/* <App /> */}
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+            <Route index element={<Home />} />
+            <Route path='home' element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode> 
 );
 
 // If you want to start measuring performance in your app, pass a function
